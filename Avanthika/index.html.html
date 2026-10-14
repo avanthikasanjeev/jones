@@ -1,0 +1,682 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jones V Anand | Director of Photography</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background: #111;
+            color: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .container {
+            width: min(1150px, 90%);
+            margin: auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 35px;
+            line-height: 1.2;
+        }
+
+        .section-title span,
+        .logo span,
+        .hero h1 span,
+        footer span {
+            color: #d7a85b;
+        }
+
+        .eyebrow {
+            color: #d7a85b;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid #d7a85b;
+            color: #d7a85b;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            margin: 8px 8px 0 0;
+        }
+
+        .btn:hover {
+            background: #d7a85b;
+            color: #111;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.97);
+            border-bottom: 1px solid #292929;
+        }
+
+        .navbar {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #ddd;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d7a85b;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* HOME BACKGROUND IMAGE */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.55) 50%,
+                    rgba(0, 0, 0, 0.20) 100%
+                ),
+                url("images/123.jpeg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            padding: 75px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 78px);
+            line-height: 1.1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* ABOUT SECTION */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-image img {
+            height: 450px;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+
+        .about-image h3 {
+            margin-top: 15px;
+            font-size: 22px;
+        }
+
+        .about-image h3 a:hover {
+            color: #d7a85b;
+        }
+
+        .about-text p {
+            color: #bbb;
+            margin-bottom: 18px;
+        }
+
+        .contact-details {
+            margin-top: 25px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .contact-details p {
+            margin: 8px 0;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-details a:hover {
+            color: #d7a85b;
+        }
+
+        /* FILM CREDITS */
+
+        .films {
+            background: #171717;
+        }
+
+        .film-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .film-card {
+            background: #202020;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .film-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .film-card img {
+            height: 280px;
+            transition: transform 0.5s;
+        }
+
+        .film-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .film-info {
+            padding: 22px;
+        }
+
+        .film-info h3 {
+            font-size: 21px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .film-info p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .film-info .role {
+            color: #d7a85b;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            background: #080808;
+            padding: 35px 15px;
+            color: #888;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 900px) {
+            .film-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid {
+                gap: 30px;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+            section {
+                padding: 55px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                padding: 25px;
+                background: #101010;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-image img {
+                height: 380px;
+            }
+
+            .film-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .film-card img {
+                height: 300px;
+            }
+
+            .hero {
+                min-height: 80vh;
+                background-position: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+        <nav class="navbar container">
+
+            <a class="logo" href="#home">
+                Jones V <span>Anand</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#films">Film Credits</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+   ```html
+<!-- HOME -->
+<section class="hero" id="home" style="background: url('images/123.jpg') center/cover no-repeat; min-height: 100vh;">
+
+    <div class="container">
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                Cinema • Light • Visual Storytelling
+            </p>
+
+            <h1>
+                Jones V<br>
+                <span>Anand</span>
+            </h1>
+
+            <p>
+                Director of Photography based in Chennai, India.
+                Creating cinematic visuals through light,
+                composition and storytelling.
+            </p>
+
+            <a href="#films" class="btn">
+                Explore My Work
+            </a>
+
+            <a href="#about" class="btn">
+                About Me
+            </a>
+
+        </div>
+    </div>
+
+</section>
+```
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="container about-grid">
+
+            <div class="about-image">
+
+                <img
+                    src="images/Anandh.jpeg"
+                    alt="Jones V Anand, Director of Photography">
+
+                <h3>
+                    <a
+                        href="https://www.imdb.com/name/nm14787399/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Jones V Anand ↗
+                    </a>
+                </h3>
+
+            </div>
+
+            <div class="about-text">
+
+                <p class="eyebrow">About Me</p>
+
+                <h2 class="section-title">
+                    Behind Every Frame,<br>
+                    <span>A Story.</span>
+                </h2>
+
+                <p>
+                    I am Jones V Anand, a Director of Photography
+                    based in Chennai, India. I am passionate about
+                    visual storytelling, cinematography, photography
+                    and filmmaking.
+                </p>
+
+                <p>
+                    I have experience working in the Tamil film
+                    industry and have worked as an Assistant
+                    Director of Photography under cinematographers
+                    U. K. Senthil Kumar and S. Saravanan.
+                </p>
+
+                <p>
+                    My work focuses on camera operation, lighting,
+                    composition and camera movements. I aim to
+                    transform creative ideas into compelling
+                    cinematic experiences by collaborating with
+                    directors and production teams.
+                </p>
+
+                <div class="contact-details">
+
+                    <p>
+                        <strong>Profession:</strong>
+                        Director of Photography
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        Chennai, India
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:jonesanand007@gmail.com">
+                            jonesanand007@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        <a href="tel:+918939255810">
+                            +91 8939255810
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>IMDb:</strong>
+                        <a
+                            href="https://www.imdb.com/name/nm14787399/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            View IMDb Profile ↗
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FILM CREDITS -->
+
+    <section class="films" id="films">
+
+        <div class="container">
+
+            <p class="eyebrow">Selected Projects</p>
+
+            <h2 class="section-title">
+                Cinematography <span>Credits</span>
+            </h2>
+
+            <div class="film-grid" id="filmGrid"></div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © <span id="year"></span> Jones V Anand
+        </p>
+
+        <p>
+            Director of Photography • Chennai, India
+        </p>
+
+    </footer>
+
+    <script>
+        /* FILM DETAILS */
+
+        const films = [
+            {
+                title: "Konja Naal Poru Thalaiva (2025)",
+                director: "Vignesh Pandiyan",
+                role: "Director of Photography",
+                cast: "Nishanth Russo, Gayathri Shan",
+                poster: "images/konjanal.jpeg",
+                imdb: "https://www.imdb.com/title/tt39127253/?ref_=nv_sr_srsg_0_tt_5_nm_3_in_0_q_konja%20"
+            },
+            {
+                title: "Dinosaurs (2023)",
+                director: "M. R. Madhavan",
+                role: "Director of Photography",
+                cast: "Udhay Karthick, Rishi Rithivk",
+                poster: "images/Dinosures.jpeg",
+                imdb: "https://www.imdb.com/title/tt27598618/?ref_=fn_rvi_i_8"
+            },
+            {
+                title: "Nungambakkam (2020)",
+                director: "S. D. Ramesh Selvan",
+                role: "Director of Photography",
+                cast: "Ajmal Ameer, Aayira",
+                poster: "images/nungabakkam.jpeg",
+                imdb: "https://www.imdb.com/title/tt9615024/?ref_=fn_rvi_i_8"
+            },
+            {
+                title: "Tharkappu (2016)",
+                director: "R. P. Ravi",
+                role: "Director of Photography",
+                cast: "Vatsan Chakravarthi, Amitha Ranganath",
+                poster: "images/tharkappu.jpeg",
+                imdb: "https://www.imdb.com/title/tt5306734/?ref_=fn_rvi_i_2"
+            },
+            {
+                title: "Baby (2015)",
+                director: "D. Suresh",
+                role: "Director of Photography",
+                cast: "Manoj K. Bharathi, Anjali Rao",
+                poster: "images/baby.jpeg",
+                imdb: "https://www.imdb.com/title/tt14353710/?ref_=fn_rvi_i_5"
+            }
+        ];
+
+        /* DISPLAY FILM CREDITS */
+
+        const filmGrid = document.getElementById("filmGrid");
+
+        films.forEach(function(film) {
+            const card = document.createElement("article");
+            card.className = "film-card";
+
+            const poster = document.createElement("img");
+            poster.src = film.poster;
+            poster.alt = film.title + " poster";
+            poster.loading = "lazy";
+
+            const info = document.createElement("div");
+            info.className = "film-info";
+
+            const title = document.createElement("h3");
+            title.textContent = film.title;
+
+            const director = document.createElement("p");
+            director.textContent = "Director: " + film.director;
+
+            const role = document.createElement("p");
+            role.className = "role";
+            role.textContent = film.role;
+
+            const cast = document.createElement("p");
+            cast.textContent = "Cast: " + film.cast;
+
+            const imdbLink = document.createElement("a");
+            imdbLink.className = "btn";
+            imdbLink.href = film.imdb;
+            imdbLink.target = "_blank";
+            imdbLink.rel = "noopener noreferrer";
+            imdbLink.textContent = "View on IMDb ↗";
+
+            info.append(
+                title,
+                director,
+                role,
+                cast,
+                imdbLink
+            );
+
+            card.append(poster, info);
+            filmGrid.appendChild(card);
+        });
+
+        /* MOBILE NAVIGATION */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function() {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
+
+            menuToggle.textContent = isOpen ? "×" : "☰";
+        });
+
+        /* CLOSE MENU AFTER CLICKING A LINK */
+
+        navLinks.querySelectorAll("a").forEach(function(link) {
+            link.addEventListener("click", function() {
+                navLinks.classList.remove("open");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation");
+
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        /* CURRENT YEAR */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+```
